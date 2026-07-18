@@ -16,22 +16,22 @@
 }
 
 .product-one {
-  background-image: url("assets/products/jogger-black.jpeg");
+  background-image: url("jogger-black.jpeg");
   background-position: center;
 }
 
 .product-two {
-  background-image: url("assets/products/jogger-training-black.jpeg");
+  background-image: url("jogger-training-black.jpeg");
   background-position: center;
 }
 
 .product-three {
-  background-image: url("assets/products/jogger-white.jpeg");
+  background-image: url("jogger-white.jpeg");
   background-position: center;
 }
 
 .product-four {
-  background-image: url("assets/products/baggy-jogger-white.png");
+  background-image: url("baggy-jogger-white.png");
   background-position: center;
 }
 
