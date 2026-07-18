@@ -12,7 +12,7 @@ const termsCheckbox = document.querySelector('#terms');
 const formError = document.querySelector('#form-error');
 const notes = document.querySelector('[name="notes"]');
 const notesCount = document.querySelector('#notes-count');
-const FREE_DELIVERY_THRESHOLD = 1990;
+const FREE_DELIVERY_THRESHOLD = 1900;
 const DELIVERY_FEE = 150;
 let cart = loadCart();
 
