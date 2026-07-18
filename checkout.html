@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Complete your LOREX order." />
+    <title>Checkout — LOREX</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="checkout.css" />
+  </head>
+  <body>
+    <header class="checkout-nav"><a class="checkout-wordmark" href="index.html">LOREX</a><a class="back-link" href="index.html">← Continue shopping</a></header>
+    <main class="checkout-main">
+      <div class="checkout-title"><p>SECURE CHECKOUT</p><h1>Complete your order.</h1></div>
+      <form id="checkout-form" novalidate>
+        <div class="checkout-layout">
+          <div class="checkout-left">
+            <section class="checkout-card order-review"><h2>Order review</h2><div id="checkout-items"></div><p id="checkout-empty" hidden>Your bag is empty. <a href="index.html#shop">Return to the shop.</a></p></section>
+            <section class="checkout-card"><h2>Shipping address</h2><div class="form-grid"><label><span>Full name</span><input name="fullName" type="text" placeholder="Your full name" required /></label><label><span>Phone number</span><input name="phone" type="tel" placeholder="01XXXXXXXXX" required /></label><label class="full-width"><span>Email <small>(optional)</small></span><input name="email" type="email" placeholder="example@gmail.com" /></label><label class="full-width"><span>Delivery address</span><input name="address" type="text" placeholder="House no. / building / street / area" required /></label><label><span>District</span><select name="district" required><option value="">Select district</option><option>Dhaka</option><option>Chattogram</option><option>Khulna</option><option>Rajshahi</option><option>Sylhet</option><option>Barishal</option><option>Rangpur</option><option>Mymensingh</option><option>Other</option></select></label><label><span>Thana <small>(optional)</small></span><input name="thana" type="text" placeholder="Your thana" /></label></div></section>
+            <section class="checkout-card notes-card"><h2>Special notes <small>(optional)</small></h2><textarea name="notes" maxlength="180" placeholder="Any delivery instructions for your order?"></textarea><p><span id="notes-count">0</span> / 180 characters</p></section>
+          </div>
+          <aside class="checkout-right">
+            <section class="checkout-card payment-card"><h2>Payment method</h2><div class="payment-options"><label class="payment-option is-selected"><input type="radio" name="payment" value="Cash on Delivery" checked /><span class="payment-icon">৳</span><span>Cash on Delivery</span><b>✓</b></label><label class="payment-option"><input type="radio" name="payment" value="Online Payment" /><span class="payment-icon card-icon">▣</span><span>Online Payment</span><b>✓</b></label><label class="payment-option"><input type="radio" name="payment" value="bKash" /><span class="payment-icon bkash-icon">b</span><span>bKash</span><b>✓</b></label></div></section>
+            <section class="checkout-card coupon-card"><button class="coupon-toggle" type="button" aria-expanded="false">Have a coupon or gift voucher? <span>⌄</span></button><div class="coupon-field" hidden><input type="text" name="coupon" placeholder="Enter coupon code" /><button type="button" id="apply-coupon">Apply</button></div><p id="coupon-message" aria-live="polite"></p></section>
+            <section class="checkout-card totals-card"><div><span>Subtotal</span><strong id="checkout-subtotal">0 TK</strong></div><div><span>Delivery cost</span><strong id="checkout-delivery">0 TK</strong></div><div class="grand-total"><span>Total</span><strong id="checkout-total">0 TK</strong></div></section>
+            <label class="terms"><input id="terms" type="checkbox" required /><span>I agree to the <a href="#">Terms and Conditions</a>, <a href="#">Privacy Policy</a> and <a href="#">Refund and Return Policy</a>.</span></label>
+            <p class="form-error" id="form-error" aria-live="polite"></p>
+            <button id="place-order" class="place-order" type="submit" disabled>Place order <span>→</span></button>
+          </aside>
+        </div>
+      </form>
+    </main>
+    <script src="checkout.js"></script>
+  </body>
+</html>
