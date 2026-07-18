@@ -12,6 +12,8 @@ const termsCheckbox = document.querySelector('#terms');
 const formError = document.querySelector('#form-error');
 const notes = document.querySelector('[name="notes"]');
 const notesCount = document.querySelector('#notes-count');
+const FREE_DELIVERY_THRESHOLD = 1990;
+const DELIVERY_FEE = 150;
 let cart = loadCart();
 
 function loadCart() {
@@ -45,15 +47,20 @@ function subtotal() {
   return cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 }
 
+function deliveryCost(orderSubtotal) {
+  return orderSubtotal >= FREE_DELIVERY_THRESHOLD ? 0 : DELIVERY_FEE;
+}
+
 function renderOrder() {
   const total = subtotal();
+  const delivery = deliveryCost(total);
   const isEmpty = cart.length === 0;
   emptyElement.hidden = !isEmpty;
   itemsElement.hidden = isEmpty;
   placeOrderButton.disabled = isEmpty;
   subtotalElement.textContent = price(total);
-  deliveryElement.textContent = '0 TK';
-  totalElement.textContent = price(total);
+  deliveryElement.textContent = delivery === 0 ? 'Free' : price(delivery);
+  totalElement.textContent = price(total + delivery);
   itemsElement.innerHTML = cart.map((item) => `
     <article class="order-item" data-cart-key="${item.cartKey}">
       <div class="order-thumbnail ${item.imageClass}" aria-hidden="true"></div>
@@ -127,7 +134,9 @@ form.addEventListener('submit', (event) => {
     'New order:',
     ...lines,
     '',
-    `Total: ${price(subtotal())}`,
+    `Subtotal: ${price(subtotal())}`,
+    `Delivery cost: ${deliveryCost(subtotal()) === 0 ? 'Free' : price(deliveryCost(subtotal()))}`,
+    `Total: ${price(subtotal() + deliveryCost(subtotal()))}`,
     `Payment method: ${details.get('payment')}`,
     '',
     `Customer: ${details.get('fullName')}`,
